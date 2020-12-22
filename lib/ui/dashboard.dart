@@ -48,7 +48,7 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height / 2,
+              height: MediaQuery.of(context).size.height / 2.4,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
@@ -60,7 +60,23 @@ class _DashboardState extends State<Dashboard> {
                 },
                 itemCount: vm.movies.length,
               ),
-            )
+            ),
+            Container(
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30.0, top: 10.0),
+                    child: Text(
+                      'Movies',
+                      style: GoogleFonts.poppins(
+                          fontSize: 25.0,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ],
+              )
+            ),
           ],
         )));
   }
