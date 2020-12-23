@@ -77,6 +77,42 @@ class _DashboardState extends State<Dashboard> {
                 ],
               )
             ),
+            Container(
+              child: Expanded(
+                child: DefaultTabController(
+                  length: 5,
+                  child: Scaffold(
+                    appBar: PreferredSize(
+                      preferredSize: Size.fromHeight(59.0),
+                      child: AppBar(
+                        elevation: 0.0,
+                        backgroundColor: Colors.white,
+                        bottom: TabBar(
+                          isScrollable: true,
+                          labelPadding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 0.0),
+                          tabs: [
+                            Text('Cat1', style: GoogleFonts.poppins(color: Colors.blue),),
+                            Text('Cat1', style: GoogleFonts.poppins(color: Colors.blue),),
+                            Text('Cat1', style: GoogleFonts.poppins(color: Colors.blue),),
+                            Text('Cat1', style: GoogleFonts.poppins(color: Colors.blue),),
+                            Text('Cat1', style: GoogleFonts.poppins(color: Colors.blue),),
+                          ],
+                        ),
+                      ),
+                    ),
+                    body: TabBarView(
+                      children: [
+                        Text('Cat1'),
+                        Text('Cat1'),
+                        Text('Cat1'),
+                        Text('Cat1'),
+                        Text('Cat1'),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         )));
   }
