@@ -10,7 +10,7 @@ class MovieDetailsModel{
   final String originalLanguage;
   final String title;
   final String backdropPath;
-  final double popularity;
+  final num popularity;
   final int voteCount;
   final bool video;
   final num voteAverage;

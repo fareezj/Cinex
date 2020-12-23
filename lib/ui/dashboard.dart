@@ -3,6 +3,7 @@ import 'package:cinex/viewmodel/movie_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'dart:io' show Platform;
 
 class Dashboard extends StatefulWidget {
   @override
@@ -48,7 +49,8 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height / 2.4,
+              height: Platform.isIOS ? MediaQuery.of(context).size.height / 2.4
+                  : MediaQuery.of(context).size.height / 2.35,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
