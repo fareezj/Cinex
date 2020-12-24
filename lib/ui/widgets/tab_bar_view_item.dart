@@ -22,8 +22,8 @@ class _TabBarViewItemState extends State<TabBarViewItem> {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return CategoryMoviesTile(
-              movieImage: vmCategory.movies[index].posterPath,
-              movieTitle: vmCategory.movies[index].title,
+              movieImage: vmCategory.categoryMovies[index].posterPath,
+              movieTitle: vmCategory.categoryMovies[index].title,
             );
           },
           itemCount: vmCategory.movies.length,

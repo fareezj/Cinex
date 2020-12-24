@@ -47,7 +47,8 @@ class _DashboardState extends State<Dashboard> {
                     IconButton(
                         icon: Icon(Icons.refresh),
                         onPressed: () {
-                          vm.getMoviesData();
+                          vm.getPopularMoviesData();
+                          vm.getCategoryMoviesData(27);
                         }),
                   ],
                 ),
