@@ -37,11 +37,17 @@ class MovieViewModel extends ChangeNotifier {
   Future<void> getCategoryMoviesData(int category) async {
 
     Map<String, dynamic> categoryMoviesData = await ApiService().fetchCategoryData(category);
+    clearCategoryList();
     categoryMoviesData['results'].forEach((element) {
       MovieDetailsModel movieDetailsModel = new MovieDetailsModel();
       movieDetailsModel = MovieDetailsModel.fromJson(element);
       categoryMovies.add(movieDetailsModel);
       notifyListeners();
     });
+  }
+
+  void clearCategoryList() {
+    categoryMovies.clear();
+    notifyListeners();
   }
 }

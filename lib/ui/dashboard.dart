@@ -87,36 +87,76 @@ class _DashboardState extends State<Dashboard> {
               Container(
                 child: Expanded(
                   child: DefaultTabController(
-                    length: 5,
-                    child: Scaffold(
-                      appBar: PreferredSize(
-                        preferredSize: Size.fromHeight(59.0),
-                        child: AppBar(
-                          elevation: 0.0,
-                          backgroundColor: Colors.white,
-                          bottom: TabBar(
-                            isScrollable: true,
-                            labelPadding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 0.0),
-                            tabs: [
-                              TabBarTitle(tabTitle: 'Actions'),
-                              TabBarTitle(tabTitle: 'Actions'),
-                              TabBarTitle(tabTitle: 'Actions'),
-                              TabBarTitle(tabTitle: 'Actions'),
-                              TabBarTitle(tabTitle: 'Actions'),
+                    length: 10,
+                    child: Builder(builder: (BuildContext context) {
+                      final TabController tabController = DefaultTabController.of(context);
+                      tabController.addListener(() {
+                        if(!tabController.indexIsChanging) {
+                          switch(tabController.index) {
+                            case 0:{vm.getCategoryMoviesData(28);} //ACTION
+                            break;
+                            case 1:{vm.getCategoryMoviesData(12);} //ADVENTURE
+                            break;
+                            case 2:{vm.getCategoryMoviesData(16);} //ANIMATION
+                            break;
+                            case 3:{vm.getCategoryMoviesData(35);} //COMEDY
+                            break;
+                            case 4:{vm.getCategoryMoviesData(80);} //CRIME
+                            break;
+                            case 5:{vm.getCategoryMoviesData(99);} //DOCUMENTARY
+                            break;
+                            case 6:{vm.getCategoryMoviesData(18);} //DRAMA
+                            break;
+                            case 7:{vm.getCategoryMoviesData(10751);} //FAMILY
+                            break;
+                            case 8:{vm.getCategoryMoviesData(14);} //FANTASY
+                            break;
+                            case 9:{vm.getCategoryMoviesData(10752);} //WAR
+                            break;
+                          }
+                        }
+                      });
+                        return Scaffold(
+                          appBar: PreferredSize(
+                            preferredSize: Size.fromHeight(59.0),
+                            child: AppBar(
+                              elevation: 0.0,
+                              backgroundColor: Colors.white,
+                              bottom: TabBar(
+                                isScrollable: true,
+                                labelPadding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 0.0),
+                                tabs: [
+                                  TabBarTitle(tabTitle: 'Actions'),
+                                  TabBarTitle(tabTitle: 'Actions'),
+                                  TabBarTitle(tabTitle: 'Actions'),
+                                  TabBarTitle(tabTitle: 'Actions'),
+                                  TabBarTitle(tabTitle: 'Actions'),
+                                  TabBarTitle(tabTitle: 'Actions'),
+                                  TabBarTitle(tabTitle: 'Actions'),
+                                  TabBarTitle(tabTitle: 'Actions'),
+                                  TabBarTitle(tabTitle: 'Actions'),
+                                  TabBarTitle(tabTitle: 'Actions'),
+                                ],
+                              ),
+                            ),
+                          ),
+                          body: TabBarView(
+                            children: [
+                              TabBarViewItem(),
+                              TabBarViewItem(),
+                              TabBarViewItem(),
+                              TabBarViewItem(),
+                              TabBarViewItem(),
+                              TabBarViewItem(),
+                              TabBarViewItem(),
+                              TabBarViewItem(),
+                              TabBarViewItem(),
+                              TabBarViewItem(),
+
                             ],
                           ),
-                        ),
-                      ),
-                      body: TabBarView(
-                        children: [
-                          TabBarViewItem(),
-                          TabBarViewItem(),
-                          TabBarViewItem(),
-                          TabBarViewItem(),
-                          TabBarViewItem(),
-                        ],
-                      ),
-                    ),
+                        );
+                    })
                   ),
                 ),
               )
