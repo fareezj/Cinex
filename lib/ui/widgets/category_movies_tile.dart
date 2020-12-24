@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cinex/utils/image_filter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CategoryMoviesTile extends StatefulWidget {
-
   final String movieImage;
   final String movieTitle;
 
@@ -41,6 +41,14 @@ class _CategoryMoviesTileState extends State<CategoryMoviesTile> {
               ),
             ),
           ),
+          Container(
+              width: MediaQuery.of(context).size.width / 2.5,
+              child: Text(
+                widget.movieTitle,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+              ))
         ],
       ),
     );
