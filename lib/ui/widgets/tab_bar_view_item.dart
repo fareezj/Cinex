@@ -15,11 +15,11 @@ class _TabBarViewItemState extends State<TabBarViewItem> {
   Widget build(BuildContext context) {
     vmCategory = Provider.of<MovieViewModel>(context, listen: true);
 
-    return Container(
-      
-      child: Expanded(
+    return Scaffold(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
         child: ListView.builder(
-          scrollDirection: Axis.vertical,
+          scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return CategoryMoviesTile(
               movieImage: vmCategory.movies[index].posterPath,

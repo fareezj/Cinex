@@ -24,14 +24,13 @@ class _CategoryMoviesTileState extends State<CategoryMoviesTile> {
               hue: 0.0,
               saturation: 0.0,
               child: Container(
-                height: MediaQuery.of(context).size.height / 2.8,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0)),
+                height: MediaQuery.of(context).size.height / 4.5,
+                width: MediaQuery.of(context).size.width / 2.5,
+                margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 25.0),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50.0),
+                      borderRadius: BorderRadius.circular(20.0),
                       image: DecorationImage(
                           image: NetworkImage(
                               "https://image.tmdb.org/t/p/original${widget.movieImage}"),
