@@ -1,4 +1,5 @@
 import 'package:cinex/ui/widgets/coming_soon_tile.dart';
+import 'package:cinex/ui/widgets/tab_bar_title.dart';
 import 'package:cinex/viewmodel/movie_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -96,11 +97,11 @@ class _DashboardState extends State<Dashboard> {
                             isScrollable: true,
                             labelPadding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 0.0),
                             tabs: [
-                              Text('Cat1', style: GoogleFonts.poppins(color: Colors.blue),),
-                              Text('Cat1', style: GoogleFonts.poppins(color: Colors.blue),),
-                              Text('Cat1', style: GoogleFonts.poppins(color: Colors.blue),),
-                              Text('Cat1', style: GoogleFonts.poppins(color: Colors.blue),),
-                              Text('Cat1', style: GoogleFonts.poppins(color: Colors.blue),),
+                              TabBarTitle(tabTitle: 'Actions'),
+                              TabBarTitle(tabTitle: 'Actions'),
+                              TabBarTitle(tabTitle: 'Actions'),
+                              TabBarTitle(tabTitle: 'Actions'),
+                              TabBarTitle(tabTitle: 'Actions'),
                             ],
                           ),
                         ),
