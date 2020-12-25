@@ -59,7 +59,7 @@ class _DashboardState extends State<Dashboard> {
                     child: Row(
                       children: [
                         Text(
-                          'Coming soon',
+                          'Popular',
                           style: GoogleFonts.poppins(
                               fontSize: 25.0,
                               color: Colors.blue,
@@ -90,7 +90,7 @@ class _DashboardState extends State<Dashboard> {
                       Padding(
                         padding: const EdgeInsets.only(left: 30.0, top: 10.0),
                         child: Text(
-                          'Movies',
+                          'Genres',
                           style: GoogleFonts.poppins(
                               fontSize: 25.0,
                               color: Colors.blue,
