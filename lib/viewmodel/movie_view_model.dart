@@ -22,10 +22,9 @@ class MovieViewModel extends ChangeNotifier {
     });
   }
 
-  Future<void> getUpcomingMoviesData() async {
+  Future<void> getUpcomingMoviesData(int page) async {
 
-    Map<String, dynamic> upcomingMoviesData = await ApiService().fetchUpcomingData();
-    upcomingMovies.clear();
+    Map<String, dynamic> upcomingMoviesData = await ApiService().fetchUpcomingData(page);
     upcomingMoviesData['results'].forEach((element) {
       MovieDetailsModel movieDetailsModel = new MovieDetailsModel();
       movieDetailsModel = MovieDetailsModel.fromJson(element);

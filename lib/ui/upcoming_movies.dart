@@ -11,15 +11,37 @@ class UpcomingMovies extends StatefulWidget {
 }
 
 class _UpcomingMoviesState extends State<UpcomingMovies> {
+
   MovieViewModel vm = new MovieViewModel();
   List<MovieDetailsModel> fetchUpcomingData = List<MovieDetailsModel>();
+  ScrollController _scrollController = ScrollController();
+
+  int currentPage = 1;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      vm.getUpcomingMoviesData();
+      vm.getUpcomingMoviesData(1);
     });
+
+    _scrollController.addListener(() {
+      if(_scrollController.position.maxScrollExtent == _scrollController.position.pixels){
+        if(_scrollController.position.pixels == _scrollController.position.maxScrollExtent){
+            currentPage += 1;
+            vm.getUpcomingMoviesData(currentPage);
+            var valuee = vm.upcomingMovies.length;
+            print('totaldata: $valuee');
+        }
+      }
+    });
+  }
+
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
   }
 
   @override
@@ -30,6 +52,7 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
     return Container(
       color: Colors.white,
       child: CustomScrollView(
+        controller: _scrollController,
         slivers: [
               SliverAppBar(
                 pinned: false,
