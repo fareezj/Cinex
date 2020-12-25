@@ -1,4 +1,4 @@
-import 'package:cinex/ui/all_movies.dart';
+import 'package:cinex/ui/upcoming_movies.dart';
 import 'package:cinex/ui/widgets/coming_soon_tile.dart';
 import 'package:cinex/ui/widgets/tab_bar_title.dart';
 import 'package:cinex/viewmodel/movie_view_model.dart';
@@ -39,8 +39,7 @@ class _DashboardState extends State<Dashboard> {
             ListTile(
               title: Text('View All Movies'),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AllMovies()));
+                Navigator.pushNamed(context, '/upcoming');
               },
             ),
           ],

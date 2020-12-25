@@ -7,8 +7,8 @@ import 'package:flutter/cupertino.dart';
 class MovieViewModel extends ChangeNotifier {
 
   List<MovieDetailsModel> movies = List<MovieDetailsModel>();
-  List<MovieDetailsModel> upcomingMovies = List<MovieDetailsModel>();
   List<MovieDetailsModel> categoryMovies = List<MovieDetailsModel>();
+  List<MovieDetailsModel> upcomingMovies = List<MovieDetailsModel>();
 
   Future<void> getPopularMoviesData() async {
 
@@ -25,13 +25,13 @@ class MovieViewModel extends ChangeNotifier {
   Future<void> getUpcomingMoviesData() async {
 
     Map<String, dynamic> upcomingMoviesData = await ApiService().fetchUpcomingData();
+    upcomingMovies.clear();
     upcomingMoviesData['results'].forEach((element) {
       MovieDetailsModel movieDetailsModel = new MovieDetailsModel();
       movieDetailsModel = MovieDetailsModel.fromJson(element);
       upcomingMovies.add(movieDetailsModel);
       notifyListeners();
     });
-
   }
 
   Future<void> getCategoryMoviesData(int category) async {
