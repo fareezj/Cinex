@@ -19,6 +19,11 @@ class _DashboardState extends State<Dashboard> {
   @override
   void initState() {
     super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      vm.getPopularMoviesData();
+      vm.getCategoryMoviesData(27);
+    });
   }
 
   @override
@@ -60,12 +65,6 @@ class _DashboardState extends State<Dashboard> {
                               color: Colors.blue,
                               fontWeight: FontWeight.w600),
                         ),
-                        IconButton(
-                            icon: Icon(Icons.refresh),
-                            onPressed: () {
-                              vm.getPopularMoviesData();
-                              vm.getCategoryMoviesData(27);
-                            }),
                       ],
                     ),
                   ),
