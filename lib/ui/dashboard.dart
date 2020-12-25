@@ -1,5 +1,5 @@
 import 'package:cinex/ui/upcoming_movies.dart';
-import 'package:cinex/ui/widgets/coming_soon_tile.dart';
+import 'package:cinex/ui/widgets/popular_movies_tile.dart';
 import 'package:cinex/ui/widgets/tab_bar_title.dart';
 import 'package:cinex/viewmodel/movie_view_model.dart';
 import 'package:flutter/material.dart';
@@ -75,7 +75,7 @@ class _DashboardState extends State<Dashboard> {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return ComingSoonTile(
+                        return PopularMoviesTile(
                           movieTitle: vm.movies[index].title,
                           showDate: vm.movies[index].releaseDate,
                           movieImage: vm.movies[index].posterPath,

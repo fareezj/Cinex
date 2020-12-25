@@ -1,4 +1,5 @@
 import 'package:cinex/ui/dashboard.dart';
+import 'package:cinex/ui/movie_details.dart';
 import 'package:cinex/ui/upcoming_movies.dart';
 import 'package:cinex/viewmodel/movie_view_model.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
             initialRoute: '/',
             routes: {
               '/upcoming': (context) => UpcomingMovies(),
+              '/movieDetails': (context) => MovieDetails(),
             },
             home: Dashboard()));
   }
