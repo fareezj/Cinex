@@ -17,12 +17,15 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      vm.getUpcomingMoviesData();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+
     vm = Provider.of<MovieViewModel>(context, listen: true);
-    vm.getUpcomingMoviesData();
 
     return Container(
       color: Colors.white,
@@ -34,12 +37,6 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
                 expandedHeight: 100.0,
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text('Cinex'),
-                ),
-                leading: IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () {
-                    vm.getUpcomingMoviesData();
-                  },
                 ),
               ),
           SliverStaggeredGrid.countBuilder(
