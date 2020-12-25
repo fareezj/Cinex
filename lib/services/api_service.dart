@@ -27,9 +27,20 @@ class ApiService {
         "https://api.themoviedb.org/3/discover/movie/?api_key=a8565c5437741344bd0c9847153c8a07&with_genres=$category";
 
     NetworkHelper networkHelper = NetworkHelper(url: url);
-    Map<String, dynamic> catgoryMovie = await networkHelper.getData();
+    Map<String, dynamic> categoryMovie = await networkHelper.getData();
 
-    return catgoryMovie;
+    return categoryMovie;
+  }
+
+  Future<dynamic> fetchMovieDetailsData(int id) async {
+
+    String url =
+        "https://api.themoviedb.org/3/discover/movie/$id?api_key=a8565c5437741344bd0c9847153c8a07&with_genres=$category";
+
+    NetworkHelper networkHelper = NetworkHelper(url: url);
+    Map<String, dynamic> movieDetails = await networkHelper.getData();
+
+    return movieDetails;
   }
 }
 
