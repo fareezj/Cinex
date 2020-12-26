@@ -11,7 +11,6 @@ class UpcomingMovies extends StatefulWidget {
 }
 
 class _UpcomingMoviesState extends State<UpcomingMovies> {
-
   MovieViewModel vm = new MovieViewModel();
   List<MovieDetailsModel> fetchUpcomingData = List<MovieDetailsModel>();
   ScrollController _scrollController = ScrollController();
@@ -26,17 +25,18 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
     });
 
     _scrollController.addListener(() {
-      if(_scrollController.position.maxScrollExtent == _scrollController.position.pixels){
-        if(_scrollController.position.pixels == _scrollController.position.maxScrollExtent){
-            currentPage += 1;
-            vm.getUpcomingMoviesData(currentPage);
-            var valuee = vm.upcomingMovies.length;
-            print('totaldata: $valuee');
+      if (_scrollController.position.maxScrollExtent ==
+          _scrollController.position.pixels) {
+        if (_scrollController.position.pixels ==
+            _scrollController.position.maxScrollExtent) {
+          currentPage += 1;
+          vm.getUpcomingMoviesData(currentPage);
+          var valuee = vm.upcomingMovies.length;
+          print('totaldata: $valuee');
         }
       }
     });
   }
-
 
   @override
   void dispose() {
@@ -46,7 +46,6 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
 
   @override
   Widget build(BuildContext context) {
-
     vm = Provider.of<MovieViewModel>(context, listen: true);
 
     return Container(
@@ -54,22 +53,24 @@ class _UpcomingMoviesState extends State<UpcomingMovies> {
       child: CustomScrollView(
         controller: _scrollController,
         slivers: [
-              SliverAppBar(
-                pinned: false,
-                floating: true,
-                expandedHeight: 100.0,
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Text('Cinex'),
-                ),
-              ),
+          SliverAppBar(
+            pinned: false,
+            floating: true,
+            expandedHeight: 100.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text('Cinex'),
+            ),
+          ),
           SliverStaggeredGrid.countBuilder(
               crossAxisCount: 4,
-              staggeredTileBuilder: (int index) => new StaggeredTile.count(2, index.isEven ? 4 : 2),
-              itemBuilder: (BuildContext context , int index) => new Container(
-                child: UpcomingMoviesTile(movieImage: vm.upcomingMovies[index].posterPath),
-              ),
+              staggeredTileBuilder: (int index) =>
+                  new StaggeredTile.count(2, index.isEven ? 4 : 2),
+              itemBuilder: (BuildContext context, int index) => new Container(
+                    child: UpcomingMoviesTile(
+                        movieId: vm.upcomingMovies[index].id,
+                        movieImage: vm.upcomingMovies[index].posterPath),
+                  ),
               itemCount: vm.upcomingMovies.length)
-
         ],
       ),
 
