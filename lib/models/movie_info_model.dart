@@ -1,7 +1,7 @@
 class MovieInfoModel {
   final bool adult;
   final String backdropPath;
-  final Null belongsToCollection;
+  //final String belongsToCollection;
   final int budget;
   //List<Genres> genres;
   String homepage;
@@ -28,7 +28,7 @@ class MovieInfoModel {
   MovieInfoModel(
       {this.adult,
         this.backdropPath,
-        this.belongsToCollection,
+        //this.belongsToCollection,
         this.budget,
         //this.genres,
         this.homepage,
@@ -57,7 +57,7 @@ class MovieInfoModel {
     return MovieInfoModel(
         adult: json['adult'] as bool,
         backdropPath: json['backdrop_path'] as String,
-        belongsToCollection: json['belongs_to_collection'] as Null,
+        //belongsToCollection: json['belongs_to_collection'] as String,
         budget: json['budget'] as int,
         originalTitle: json['original_title'] as String,
         homepage: json['homepage'],

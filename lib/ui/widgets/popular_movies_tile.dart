@@ -20,7 +20,7 @@ class _PopularMoviesTileState extends State<PopularMoviesTile> {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, '/movieDetails', arguments: <String, int> {
-          'movieId': widget.movieId!= null ? widget.movieId : '0',
+          'movieId': widget.movieId,
         });
       },
       child: Container(
