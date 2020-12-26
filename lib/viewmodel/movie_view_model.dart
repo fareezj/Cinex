@@ -1,5 +1,6 @@
 
 import 'package:cinex/models/movie_details_model.dart';
+import 'package:cinex/models/movie_info_model.dart';
 import 'package:cinex/models/movie_model.dart';
 import 'package:cinex/services/api_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,7 +10,7 @@ class MovieViewModel extends ChangeNotifier {
   List<MovieDetailsModel> movies = List<MovieDetailsModel>();
   List<MovieDetailsModel> categoryMovies = List<MovieDetailsModel>();
   List<MovieDetailsModel> upcomingMovies = List<MovieDetailsModel>();
-  List<MovieDetailsModel> movieDetails= List<MovieDetailsModel>();
+  List<MovieInfoModel> movieDetails= List<MovieInfoModel>();
 
   Future<void> getPopularMoviesData() async {
 
@@ -50,13 +51,14 @@ class MovieViewModel extends ChangeNotifier {
 
     Map<String, dynamic> movieDetailsData = await ApiService().fetchMovieDetailsData(id);
     movieDetails.clear();
-    movieDetailsData['results'].forEach((element) {
-      MovieDetailsModel movieDetailsModel = new MovieDetailsModel();
-      movieDetailsModel = MovieDetailsModel.fromJson(element);
-      movieDetails.add(movieDetailsModel);
-      notifyListeners();
-    });
-
+    MovieInfoModel movieInfoModel = new MovieInfoModel();
+    movieInfoModel = MovieInfoModel.fromJson(movieDetailsData);
+    // for (int i=0 ; i < movieDetailsData.length ; i++) {
+    //   movieDetails.add(movieInfoModel);
+    //   notifyListeners();
+    // }
+    movieDetails.add(movieInfoModel);
+    notifyListeners();
   }
 
   void clearCategoryList() {

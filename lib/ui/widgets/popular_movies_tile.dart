@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PopularMoviesTile extends StatefulWidget {
+  final int movieId;
   final String movieTitle;
   final String showDate;
   final String movieImage;
 
-  PopularMoviesTile({this.movieTitle, this.showDate, this.movieImage});
+  PopularMoviesTile({this.movieId, this.movieTitle, this.showDate, this.movieImage});
 
   @override
   _PopularMoviesTileState createState() => _PopularMoviesTileState();
@@ -18,9 +19,8 @@ class _PopularMoviesTileState extends State<PopularMoviesTile> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/movieDetails', arguments: <String, String> {
-          'movieTitle': widget.movieTitle != null ? widget.movieTitle : 'null',
-          'movieImage': widget.movieImage != null ? widget.movieImage: 'null'
+        Navigator.pushNamed(context, '/movieDetails', arguments: <String, int> {
+          'movieId': widget.movieId!= null ? widget.movieId : '0',
         });
       },
       child: Container(

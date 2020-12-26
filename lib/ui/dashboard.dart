@@ -76,6 +76,7 @@ class _DashboardState extends State<Dashboard> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return PopularMoviesTile(
+                          movieId: vm.movies[index].id,
                           movieTitle: vm.movies[index].title,
                           showDate: vm.movies[index].releaseDate,
                           movieImage: vm.movies[index].posterPath,
