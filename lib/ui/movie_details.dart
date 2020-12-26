@@ -38,19 +38,22 @@ class _MovieDetailsState extends State<MovieDetails> {
   Widget build(BuildContext context) {
     vm = Provider.of<MovieViewModel>(context, listen: true);
 
-    return Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold(body: SingleChildScrollView(
       child: Column(children: [
         Stack(
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height / 2,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(50.0),
               child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            "https://image.tmdb.org/t/p/original${vm.movieDetails[0].backdropPath}"),
-                        fit: BoxFit.fill)),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(50.0)),
+                height: MediaQuery.of(context).size.height / 2,
+                child: Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(
+                              "https://image.tmdb.org/t/p/original${vm.movieDetails[0].backdropPath}"),
+                          fit: BoxFit.fill)),
+                ),
               ),
             ),
             SafeArea(
@@ -65,6 +68,19 @@ class _MovieDetailsState extends State<MovieDetails> {
             ),
           ],
         ),
+        Container(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Text(vm.movieDetails[0].originalTitle),
+                  Text(vm.movieDetails[0].adult.toString())
+                ],
+              ),
+              Text(vm.movieDetails[0].overview.toString())
+            ],
+          ),
+        )
       ]),
     ));
   }

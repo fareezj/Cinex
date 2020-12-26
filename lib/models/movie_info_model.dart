@@ -1,65 +1,81 @@
 class MovieInfoModel {
   final bool adult;
   final String backdropPath;
-  //final Null belongsToCollection;
+  final Null belongsToCollection;
   final int budget;
-  // List<Genres> genres;
-  // String homepage;
-  // int id;
-  // String imdbId;
-  // String originalLanguage;
+  //List<Genres> genres;
+  String homepage;
+  int id;
+  String imdbId;
+  String originalLanguage;
   final String originalTitle;
-  // String overview;
-  // double popularity;
-  // String posterPath;
-  // List<ProductionCompanies> productionCompanies;
-  // List<ProductionCountries> productionCountries;
-  // String releaseDate;
-  // int revenue;
-  // int runtime;
-  // List<SpokenLanguages> spokenLanguages;
-  // String status;
-  // String tagline;
-  // String title;
-  // bool video;
-  // double voteAverage;
-  // int voteCount;
+  String overview;
+  double popularity;
+  String posterPath;
+  //List<ProductionCompanies> productionCompanies;
+  //List<ProductionCountries> productionCountries;
+  String releaseDate;
+  int revenue;
+  int runtime;
+  //List<SpokenLanguages> spokenLanguages;
+  String status;
+  String tagline;
+  String title;
+  bool video;
+  double voteAverage;
+  int voteCount;
 
   MovieInfoModel(
       {this.adult,
         this.backdropPath,
-        //this.belongsToCollection,
+        this.belongsToCollection,
         this.budget,
-        // this.genres,
-        // this.homepage,
-        // this.id,
-        // this.imdbId,
-        // this.originalLanguage,
+        //this.genres,
+        this.homepage,
+        this.id,
+        this.imdbId,
+        this.originalLanguage,
         this.originalTitle,
-        // this.overview,
-        // this.popularity,
-        // this.posterPath,
-        // this.productionCompanies,
-        // this.productionCountries,
-        // this.releaseDate,
-        // this.revenue,
-        // this.runtime,
-        // this.spokenLanguages,
-        // this.status,
-        // this.tagline,
-        // this.title,
-        // this.video,
-        // this.voteAverage,
-        // this.voteCount
+        this.overview,
+        this.popularity,
+        this.posterPath,
+        //this.productionCompanies,
+        //this.productionCountries,
+        this.releaseDate,
+        this.revenue,
+        this.runtime,
+        //this.spokenLanguages,
+        this.status,
+        this.tagline,
+        this.title,
+        this.video,
+        this.voteAverage,
+        this.voteCount
       });
 
   factory MovieInfoModel.fromJson(Map<String, dynamic> json) {
     return MovieInfoModel(
         adult: json['adult'] as bool,
         backdropPath: json['backdrop_path'] as String,
-        //belongsToCollection: json['belongs_to_collection'] as Null,
+        belongsToCollection: json['belongs_to_collection'] as Null,
         budget: json['budget'] as int,
-        originalTitle: json['original_title'] as String
+        originalTitle: json['original_title'] as String,
+        homepage: json['homepage'],
+        id: json['id'],
+        imdbId: json['imdb_id'],
+        originalLanguage: json['original_language'],
+        overview: json['overview'],
+        popularity: json['popularity'],
+        posterPath: json['poster_path'],
+        releaseDate: json['release_date'],
+        revenue: json['revenue'],
+        runtime: json['runtime'],
+         status: json['status'],
+         tagline: json['tagline'],
+         title: json['title'],
+         video: json['video'],
+         voteAverage: json['vote_average'],
+         voteCount: json['vote_count']
     );
   }
   //   adult = json['adult'];
