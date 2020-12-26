@@ -3,7 +3,7 @@ class MovieInfoModel {
   final String backdropPath;
   //final String belongsToCollection;
   final int budget;
-  //List<Genres> genres;
+  List<Genres> genres;
   String homepage;
   int id;
   String imdbId;
@@ -30,7 +30,7 @@ class MovieInfoModel {
         this.backdropPath,
         //this.belongsToCollection,
         this.budget,
-        //this.genres,
+        this.genres,
         this.homepage,
         this.id,
         this.imdbId,
@@ -70,12 +70,12 @@ class MovieInfoModel {
         releaseDate: json['release_date'],
         revenue: json['revenue'],
         runtime: json['runtime'],
-         status: json['status'],
-         tagline: json['tagline'],
-         title: json['title'],
-         video: json['video'],
-         voteAverage: json['vote_average'],
-         voteCount: json['vote_count']
+        status: json['status'],
+        tagline: json['tagline'],
+        title: json['title'],
+        video: json['video'],
+        voteAverage: json['vote_average'],
+        voteCount: json['vote_count']
     );
   }
   //   adult = json['adult'];
@@ -166,23 +166,17 @@ class MovieInfoModel {
   //   return data;
   // }
 }
-
 class Genres {
   int id;
   String name;
 
   Genres({this.id, this.name});
 
-  Genres.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    return data;
+  factory Genres.fromJson(Map<String, dynamic> json) {
+    return Genres(
+      id: json['id'],
+      name: json['name']
+    );
   }
 }
 

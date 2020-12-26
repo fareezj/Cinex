@@ -1,6 +1,7 @@
 import 'package:cinex/models/movie_details_model.dart';
 import 'package:cinex/viewmodel/movie_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class MovieDetails extends StatefulWidget {
@@ -38,14 +39,16 @@ class _MovieDetailsState extends State<MovieDetails> {
   Widget build(BuildContext context) {
     vm = Provider.of<MovieViewModel>(context, listen: true);
 
-    return Scaffold(body: SingleChildScrollView(
+    return Scaffold(
+        body: SingleChildScrollView(
       child: Column(children: [
         Stack(
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(50.0),
               child: Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(50.0)),
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(50.0)),
                 height: MediaQuery.of(context).size.height / 2,
                 child: Container(
                   decoration: BoxDecoration(
@@ -69,15 +72,51 @@ class _MovieDetailsState extends State<MovieDetails> {
           ],
         ),
         Container(
+          height: MediaQuery.of(context).size.height,
+          margin: EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Text(vm.movieDetails[0].originalTitle),
-                  Text(vm.movieDetails[0].adult.toString())
-                ],
+              Container(
+                margin: EdgeInsets.only(top: 20.0, bottom: 30.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      vm.movieDetails[0].originalTitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.poppins(
+                          fontSize: 20.0,
+                          color: Colors.lightBlue[800],
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(vm.movieDetails[0].voteAverage.toString(),
+                      style: GoogleFonts.poppins(
+                          fontSize: 20.0,
+                          color: Colors.lightBlue[800],
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
               ),
-              Text(vm.movieDetails[0].overview.toString())
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text('Description',
+                  textAlign: TextAlign.start,
+                  style: GoogleFonts.poppins(
+                    fontSize: 18.0,
+                    color: Colors.lightBlue[900],
+                      fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 15.0),
+              Text(vm.movieDetails[0].overview.toString(),
+                style: GoogleFonts.poppins(
+                    fontSize: 16.0,
+                    color: Colors.lightBlue[900],
+                    ),
+              )
             ],
           ),
         )

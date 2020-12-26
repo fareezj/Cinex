@@ -10,7 +10,7 @@ class TabBarViewItem extends StatefulWidget {
 
 class _TabBarViewItemState extends State<TabBarViewItem> {
   var vmCategory = MovieViewModel();
-
+  
   @override
   Widget build(BuildContext context) {
     vmCategory = Provider.of<MovieViewModel>(context, listen: true);
