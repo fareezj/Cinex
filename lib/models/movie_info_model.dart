@@ -3,7 +3,7 @@ class MovieInfoModel {
   final String backdropPath;
   //final String belongsToCollection;
   final int budget;
-  List<Genres> genres;
+  final List genres;
   String homepage;
   int id;
   String imdbId;
@@ -75,7 +75,8 @@ class MovieInfoModel {
         title: json['title'],
         video: json['video'],
         voteAverage: json['vote_average'],
-        voteCount: json['vote_count']
+        voteCount: json['vote_count'],
+        genres: json['genres']
     );
   }
   //   adult = json['adult'];

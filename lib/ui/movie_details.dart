@@ -1,4 +1,5 @@
 import 'package:cinex/models/movie_details_model.dart';
+import 'package:cinex/models/movie_info_model.dart';
 import 'package:cinex/viewmodel/movie_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -77,12 +78,12 @@ class _MovieDetailsState extends State<MovieDetails> {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 20.0, bottom: 30.0),
+                margin: EdgeInsets.only(top: 20.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      vm.movieDetails[0].originalTitle,
+                      vm.movieDetails[0].title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.poppins(
@@ -90,7 +91,8 @@ class _MovieDetailsState extends State<MovieDetails> {
                           color: Colors.lightBlue[800],
                           fontWeight: FontWeight.bold),
                     ),
-                    Text(vm.movieDetails[0].voteAverage.toString(),
+                    Text(
+                      vm.movieDetails[0].voteAverage.toString(),
                       style: GoogleFonts.poppins(
                           fontSize: 20.0,
                           color: Colors.lightBlue[800],
@@ -99,23 +101,35 @@ class _MovieDetailsState extends State<MovieDetails> {
                   ],
                 ),
               ),
+              Container(
+                height: 50.0,
+                margin: EdgeInsets.only(top: 10.0),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                    itemCount: vm.genreList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Text('${vm.genreList[index].name}, ', style: GoogleFonts.poppins(),);
+                    }),
+              ),
               Align(
                 alignment: Alignment.topLeft,
-                child: Text('Description',
+                child: Text(
+                  'Description',
                   textAlign: TextAlign.start,
                   style: GoogleFonts.poppins(
                     fontSize: 18.0,
                     color: Colors.lightBlue[900],
-                      fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               SizedBox(height: 15.0),
-              Text(vm.movieDetails[0].overview.toString(),
+              Text(
+                vm.movieDetails[0].overview.toString(),
                 style: GoogleFonts.poppins(
-                    fontSize: 16.0,
-                    color: Colors.lightBlue[900],
-                    ),
+                  fontSize: 16.0,
+                  color: Colors.lightBlue[900],
+                ),
               )
             ],
           ),

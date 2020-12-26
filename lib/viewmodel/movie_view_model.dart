@@ -11,6 +11,7 @@ class MovieViewModel extends ChangeNotifier {
   List<MovieDetailsModel> categoryMovies = List<MovieDetailsModel>();
   List<MovieDetailsModel> upcomingMovies = List<MovieDetailsModel>();
   List<MovieInfoModel> movieDetails= List<MovieInfoModel>();
+  List<Genres> genreList = List<Genres>();
 
   Future<void> getPopularMoviesData() async {
 
@@ -51,14 +52,18 @@ class MovieViewModel extends ChangeNotifier {
 
     Map<String, dynamic> movieDetailsData = await ApiService().fetchMovieDetailsData(id);
     movieDetails.clear();
+    genreList.clear();
     MovieInfoModel movieInfoModel = new MovieInfoModel();
     movieInfoModel = MovieInfoModel.fromJson(movieDetailsData);
-    // for (int i=0 ; i < movieDetailsData.length ; i++) {
-    //   movieDetails.add(movieInfoModel);
-    //   notifyListeners();
-    // }
     movieDetails.add(movieInfoModel);
-    notifyListeners();
+    movieDetailsData['genres'].forEach((element) {
+      Genres genres = new Genres();
+      genres = Genres.fromJson(element);
+      genreList.add(genres);
+      print(genres.name);
+      notifyListeners();
+    });
+
   }
 
   void clearCategoryList() {
