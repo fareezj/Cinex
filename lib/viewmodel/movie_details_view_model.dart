@@ -34,12 +34,7 @@ class MovieDetailsViewModel extends ChangeNotifier {
     credits.cast.forEach((element) {
       Cast cast = new Cast();
       cast = Cast.fromJson(element);
-      var fetchCast = List<Cast>();
-      fetchCast.clear();
-      fetchCast.add(cast);
-      fetchCast.forEach((element) {
-        movieCastsList.add(element);
-      });
+      movieCastsList.add(cast);
       notifyListeners();
     });
   }
