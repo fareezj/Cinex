@@ -24,34 +24,35 @@ class MovieInfoModel {
   bool video;
   double voteAverage;
   int voteCount;
+  Credits credits;
 
   MovieInfoModel(
       {this.adult,
-        this.backdropPath,
-        //this.belongsToCollection,
-        this.budget,
-        this.genres,
-        this.homepage,
-        this.id,
-        this.imdbId,
-        this.originalLanguage,
-        this.originalTitle,
-        this.overview,
-        this.popularity,
-        this.posterPath,
-        //this.productionCompanies,
-        //this.productionCountries,
-        this.releaseDate,
-        this.revenue,
-        this.runtime,
-        //this.spokenLanguages,
-        this.status,
-        this.tagline,
-        this.title,
-        this.video,
-        this.voteAverage,
-        this.voteCount
-      });
+      this.backdropPath,
+      //this.belongsToCollection,
+      this.budget,
+      this.genres,
+      this.homepage,
+      this.id,
+      this.imdbId,
+      this.originalLanguage,
+      this.originalTitle,
+      this.overview,
+      this.popularity,
+      this.posterPath,
+      //this.productionCompanies,
+      //this.productionCountries,
+      this.releaseDate,
+      this.revenue,
+      this.runtime,
+      //this.spokenLanguages,
+      this.status,
+      this.tagline,
+      this.title,
+      this.video,
+      this.voteAverage,
+      this.voteCount,
+      this.credits});
 
   factory MovieInfoModel.fromJson(Map<String, dynamic> json) {
     return MovieInfoModel(
@@ -76,7 +77,8 @@ class MovieInfoModel {
         video: json['video'],
         voteAverage: json['vote_average'],
         voteCount: json['vote_count'],
-        genres: json['genres']
+        genres: json['genres'],
+        credits: Credits.fromJson(json['credits'])
     );
   }
   //   adult = json['adult'];
@@ -167,6 +169,7 @@ class MovieInfoModel {
   //   return data;
   // }
 }
+
 class Genres {
   int id;
   String name;
@@ -174,10 +177,7 @@ class Genres {
   Genres({this.id, this.name});
 
   factory Genres.fromJson(Map<String, dynamic> json) {
-    return Genres(
-      id: json['id'],
-      name: json['name']
-    );
+    return Genres(id: json['id'], name: json['name']);
   }
 }
 
@@ -244,5 +244,64 @@ class SpokenLanguages {
     data['iso_639_1'] = this.iso6391;
     data['name'] = this.name;
     return data;
+  }
+}
+
+class Credits {
+  final int id;
+  final List cast;
+
+  Credits({this.id, this.cast});
+
+  factory Credits.fromJson(Map<String, dynamic> parsedJson) {
+    return Credits(id: parsedJson['id'], cast: parsedJson['cast']);
+  }
+}
+
+class Cast {
+  bool adult;
+  int gender;
+  int id;
+  String knownForDepartment;
+  String name;
+  String originalName;
+  double popularity;
+  String profilePath;
+  int castId;
+  String character;
+  String creditId;
+  int order;
+
+  Cast(
+      {this.adult,
+      this.gender,
+      this.id,
+      this.knownForDepartment,
+      this.name,
+      this.originalName,
+      this.popularity,
+      this.profilePath,
+      this.castId,
+      this.character,
+      this.creditId,
+      this.order});
+
+  factory Cast.fromJson(Map<String, dynamic> parsedJson) {
+    return Cast(
+      adult: parsedJson['adult'],
+      gender: parsedJson['gender'],
+      id: parsedJson['id'],
+      knownForDepartment: parsedJson['known_for_department'],
+      name: parsedJson['name'],
+      originalName: parsedJson['original_name'],
+      popularity: parsedJson['popularity'],
+      profilePath: parsedJson['profile_path'] != null
+          ? parsedJson['profile_path']
+          : 'unavailable',
+      castId: parsedJson['cast_id'],
+      character: parsedJson['character'],
+      creditId: parsedJson['credit_id'],
+      order: parsedJson['order'],
+    );
   }
 }

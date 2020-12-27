@@ -7,22 +7,34 @@ class MovieDetailsViewModel extends ChangeNotifier {
 
   List<MovieInfoModel> movieDetails= List<MovieInfoModel>();
   List<Genres> genreList = List<Genres>();
+  List<Cast> movieCastsList = List<Cast>();
 
   Future<void> getMovieDetailsData(int id) async {
 
     Map<String, dynamic> movieDetailsData = await ApiService().fetchMovieDetailsData(id);
     movieDetails.clear();
     genreList.clear();
+
     MovieInfoModel movieInfoModel = new MovieInfoModel();
     movieInfoModel = MovieInfoModel.fromJson(movieDetailsData);
-    movieDetails.add(movieInfoModel);
+    movieDetails.add(movieInfoModel); // ADD MOVIE DETAILS
     movieDetailsData['genres'].forEach((element) {
       Genres genres = new Genres();
       genres = Genres.fromJson(element);
-      genreList.add(genres);
+      genreList.add(genres); // ADD MOVIE GENRE LIST
       print(genres.name);
-      notifyListeners();
     });
-
+    // movieDetailsData['credits'].forEach((element) {
+    //   Credits credits = new Credits();
+    // });
+    Credits credits = new Credits();
+    credits = Credits.fromJson(movieDetailsData['credits']);
+    credits.cast.forEach((element) {
+      Cast cast = new Cast();
+      cast = Cast.fromJson(element);
+      movieCastsList.add(cast);
+    });
+    movieCastsList.forEach((element) {print(element.name);});
   }
+  notifyListeners();
 }
