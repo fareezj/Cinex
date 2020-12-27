@@ -134,7 +134,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                   color: Colors.lightBlue[900],
                 ),
               ),
-              SizedBox(height: 15.0),
+              SizedBox(height: 20.0),
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
@@ -154,8 +154,10 @@ class _MovieDetailsState extends State<MovieDetails> {
                       itemCount: vm.movieCastsList.length,
                       itemBuilder: (BuildContext context, int index) {
                         return MovieCastList(
-                            castImage: vm.movieCastsList[index].profilePath,
-                            castName: vm.movieCastsList[index].name);
+                          castImage: vm.movieCastsList[index].profilePath,
+                          castName: vm.movieCastsList[index].name,
+                          castPopularity: vm.movieCastsList[index].popularity,
+                        );
                       }),
                 ),
               )
