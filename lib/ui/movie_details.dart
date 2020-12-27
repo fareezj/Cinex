@@ -1,5 +1,4 @@
-import 'package:cinex/models/movie_details_model.dart';
-import 'package:cinex/models/movie_info_model.dart';
+import 'package:cinex/viewmodel/movie_details_view_model.dart';
 import 'package:cinex/viewmodel/movie_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +16,7 @@ class MovieDetails extends StatefulWidget {
 
 class _MovieDetailsState extends State<MovieDetails> {
   var movieId;
-  var vm = MovieViewModel();
+  var vm = MovieDetailsViewModel();
 
   @override
   void initState() {
@@ -38,7 +37,7 @@ class _MovieDetailsState extends State<MovieDetails> {
 
   @override
   Widget build(BuildContext context) {
-    vm = Provider.of<MovieViewModel>(context, listen: true);
+    vm = Provider.of<MovieDetailsViewModel>(context, listen: true);
 
     return Scaffold(
         body: SingleChildScrollView(
