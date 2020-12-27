@@ -1,3 +1,4 @@
+import 'package:cinex/ui/widgets/movie_cast_list.dart';
 import 'package:cinex/viewmodel/movie_details_view_model.dart';
 import 'package:cinex/viewmodel/movie_view_model.dart';
 import 'package:flutter/material.dart';
@@ -104,10 +105,13 @@ class _MovieDetailsState extends State<MovieDetails> {
                 height: 50.0,
                 margin: EdgeInsets.only(top: 10.0),
                 child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
+                    scrollDirection: Axis.horizontal,
                     itemCount: vm.genreList.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Text('${vm.genreList[index].name}, ', style: GoogleFonts.poppins(),);
+                      return Text(
+                        '${vm.genreList[index].name}, ',
+                        style: GoogleFonts.poppins(),
+                      );
                     }),
               ),
               Align(
@@ -128,6 +132,31 @@ class _MovieDetailsState extends State<MovieDetails> {
                 style: GoogleFonts.poppins(
                   fontSize: 16.0,
                   color: Colors.lightBlue[900],
+                ),
+              ),
+              SizedBox(height: 15.0),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  'The Cast',
+                  style: GoogleFonts.poppins(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.lightBlue[900],
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: vm.movieCastsList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return MovieCastList(
+                            castImage: vm.movieCastsList[index].profilePath,
+                            castName: vm.movieCastsList[index].name);
+                      }),
                 ),
               )
             ],

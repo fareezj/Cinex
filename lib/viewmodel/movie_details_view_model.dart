@@ -22,19 +22,26 @@ class MovieDetailsViewModel extends ChangeNotifier {
       Genres genres = new Genres();
       genres = Genres.fromJson(element);
       genreList.add(genres); // ADD MOVIE GENRE LIST
+      notifyListeners();
       print(genres.name);
     });
     // movieDetailsData['credits'].forEach((element) {
     //   Credits credits = new Credits();
     // });
+    movieCastsList.clear();
     Credits credits = new Credits();
     credits = Credits.fromJson(movieDetailsData['credits']);
     credits.cast.forEach((element) {
       Cast cast = new Cast();
       cast = Cast.fromJson(element);
-      movieCastsList.add(cast);
+      var fetchCast = List<Cast>();
+      fetchCast.clear();
+      fetchCast.add(cast);
+      fetchCast.forEach((element) {
+        movieCastsList.add(element);
+      });
+      notifyListeners();
     });
-    movieCastsList.forEach((element) {print(element.name);});
   }
-  notifyListeners();
+
 }
