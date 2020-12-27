@@ -38,22 +38,31 @@ class _MovieCastListState extends State<MovieCastList> {
                 ),
               ),
               Positioned(
-                top: 3.0,
-                right: 40.0,
-                child: Text(
-                  widget.castPopularity.toStringAsFixed(1),
-                  style: GoogleFonts.poppins(),
-                ),
-              ),
-              Positioned(
+                  top: 15.0,
                   right: 10.0,
-                  child: Icon(
-                    Icons.star_sharp,
-                    color: Colors.amber,
-                  ))
+                  child: Container(
+                    padding: EdgeInsets.all(3.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white,
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          widget.castPopularity.toStringAsFixed(1),
+                          style:
+                              GoogleFonts.poppins(color: Colors.lightBlue[900]),
+                        ),
+                        Icon(
+                          Icons.star_sharp,
+                          color: Colors.amber,
+                        ),
+                      ],
+                    ),
+                  )),
             ],
           ),
-          SizedBox(height: 15.0),
+          SizedBox(height: 10.0),
           Text(
             widget.castName,
             style: GoogleFonts.poppins(),
