@@ -89,20 +89,21 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                   Container(
-                      child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 30.0, top: 10.0),
-                        child: Text(
-                          'Genres',
-                          style: GoogleFonts.poppins(
-                              fontSize: 25.0,
-                              color: Colors.blue,
-                              fontWeight: FontWeight.w600),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30.0, top: 10.0),
+                          child: Text(
+                            'Genres',
+                            style: GoogleFonts.poppins(
+                                fontSize: 25.0,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.w600),
+                          ),
                         ),
-                      ),
-                    ],
-                  )),
+                      ],
+                    ),
+                  ),
                   Container(
                     child: Expanded(
                       child: DefaultTabController(
