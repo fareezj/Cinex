@@ -1,6 +1,8 @@
+import 'package:cinex/ui/actor_details.dart';
 import 'package:cinex/ui/dashboard.dart';
 import 'package:cinex/ui/movie_details.dart';
 import 'package:cinex/ui/upcoming_movies.dart';
+import 'package:cinex/viewmodel/actor_details_view_model.dart';
 import 'package:cinex/viewmodel/movie_details_view_model.dart';
 import 'package:cinex/viewmodel/movie_view_model.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +20,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<MovieViewModel>(create: (_) => MovieViewModel()),
         ChangeNotifierProvider<MovieDetailsViewModel>(create: (_) => MovieDetailsViewModel()),
+        ChangeNotifierProvider<ActorDetailsViewModel>(create: (_) => ActorDetailsViewModel())
       ],
       child: MaterialApp(
           title: 'Flutter Demo',
@@ -29,6 +32,7 @@ class MyApp extends StatelessWidget {
           routes: {
             '/upcoming': (context) => UpcomingMovies(),
             '/movieDetails': (context) => MovieDetails(),
+            '/actorDetails': (context) => ActorDetails(),
           },
           home: Dashboard()),
     );

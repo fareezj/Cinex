@@ -154,6 +154,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                       itemCount: vm.movieCastsList.length,
                       itemBuilder: (BuildContext context, int index) {
                         return MovieCastList(
+                          castId: vm.movieCastsList[index].id,
                           castImage: vm.movieCastsList[index].profilePath,
                           castName: vm.movieCastsList[index].name,
                           castPopularity: vm.movieCastsList[index].popularity,

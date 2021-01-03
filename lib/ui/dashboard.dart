@@ -2,6 +2,7 @@ import 'package:cinex/ui/upcoming_movies.dart';
 import 'package:cinex/ui/widgets/popular_movies_tile.dart';
 import 'package:cinex/ui/widgets/tab_bar_title.dart';
 import 'package:cinex/viewmodel/movie_view_model.dart';
+import 'package:cinex/viewmodel/actor_details_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   var vm = MovieViewModel();
+  var vv = ActorDetailsViewModel();
 
   @override
   void initState() {
@@ -23,6 +25,7 @@ class _DashboardState extends State<Dashboard> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       vm.getPopularMoviesData();
       vm.getCategoryMoviesData(27);
+      vv.getActorDetailsData(287);
     });
   }
 
