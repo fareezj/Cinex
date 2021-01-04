@@ -1,3 +1,4 @@
+import 'package:cinex/ui/widgets/tab_bar_view_actor_movie.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cinex/viewmodel/actor_details_view_model.dart';
@@ -68,7 +69,7 @@ class _ActorDetailsState extends State<ActorDetails> {
                     Text(vm.actorDetailsData.biography),
                     Text(vm.actorDetailsData.birthday),
                     Container(
-                      height: MediaQuery.of(context).size.height /3,
+                      height: MediaQuery.of(context).size.height,
                       child: Expanded(
                         child: DefaultTabController(
                           length: 2,
@@ -103,7 +104,7 @@ class _ActorDetailsState extends State<ActorDetails> {
                               body: TabBarView(
                                 children: [
                                   Container(
-                                    child: Text('movie'),
+                                    child: TabBarViewActorMovie(),
                                   ),
                                   Container(
                                     child: Text('tv'),

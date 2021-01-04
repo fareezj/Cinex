@@ -36,7 +36,7 @@ class ActorInfo {
     return ActorInfo(
         birthday: json['birthday'],
         knownForDepartment: json['known_for_department'],
-        deathday: json['deathday'],
+        deathday: json['deathday'] != null ? json['deathday'] : '',
         id: json['id'],
         name: json['name'],
         alsoKnownAs: json['also_known_as'].cast<String>(),
@@ -47,7 +47,7 @@ class ActorInfo {
         profilePath: json['profile_path'],
         adult: json['adult'],
         imdbId: json['imdb_id'],
-        homepage: json['homepage'],
+        homepage: json['homepage'] != null ? json['homepage'] : '',
         movieCredits: MovieCredits.fromJson(json['movie_credits'])
     );
   }
@@ -59,11 +59,11 @@ class MovieCredits {
   MovieCredits({this.cast});
 
   factory MovieCredits.fromJson(Map<String, dynamic> json) {
-    return MovieCredits(cast: json['cast']);
+    return MovieCredits(cast: json['cast'] );
   }
 }
 
-class Cast {
+class MovieCast {
   String character;
   String creditId;
   String releaseDate;
@@ -81,7 +81,7 @@ class Cast {
   String overview;
   String posterPath;
 
-  Cast({this.character,
+  MovieCast({this.character,
     this.creditId,
     this.releaseDate,
     this.voteCount,
@@ -98,8 +98,8 @@ class Cast {
     this.overview,
     this.posterPath});
 
-  factory Cast.fromJson(Map<String, dynamic> json) {
-    return Cast(
+  factory MovieCast.fromJson(Map<String, dynamic> json) {
+    return MovieCast(
         character: json['character'],
         creditId: json['credit_id'],
         releaseDate: json['release_date'],
