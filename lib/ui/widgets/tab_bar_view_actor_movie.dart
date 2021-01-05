@@ -10,7 +10,6 @@ class TabBarViewActorMovie extends StatefulWidget {
 }
 
 class _TabBarViewActorMovieState extends State<TabBarViewActorMovie> {
-
   var vmActorMovie = ActorDetailsViewModel();
 
   @override
@@ -21,16 +20,25 @@ class _TabBarViewActorMovieState extends State<TabBarViewActorMovie> {
 
   @override
   Widget build(BuildContext context) {
-
     vmActorMovie = Provider.of<ActorDetailsViewModel>(context, listen: true);
 
     return Container(
-      child: ListView.builder(itemBuilder: (context, index) {
-        return ActorMovieTile(
-          title: vmActorMovie.actorMovieCredits[index].title,
-          image: vmActorMovie.actorMovieCredits[index].posterPath,
-        );
-      }, itemCount: vmActorMovie.actorMovieCredits.length, scrollDirection: Axis.vertical,),
-    );
+        child: GridView.count(
+          childAspectRatio: 0.6,
+            crossAxisCount: 2,
+            children:
+                List.generate(vmActorMovie.actorMovieCredits.length, (index) {
+              return ActorMovieTile(
+                title: vmActorMovie.actorMovieCredits[index].title,
+                image: vmActorMovie.actorMovieCredits[index].posterPath,
+              );
+            })));
   }
 }
+
+// ListView.builder(itemBuilder: (context, index) {
+// return ActorMovieTile(
+// title: vmActorMovie.actorMovieCredits[index].title,
+// image: vmActorMovie.actorMovieCredits[index].posterPath,
+// );
+// }, itemCount: vmActorMovie.actorMovieCredits.length, scrollDirection: Axis.vertical,),

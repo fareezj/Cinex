@@ -72,48 +72,45 @@ class _ActorDetailsState extends State<ActorDetails> {
                       height: MediaQuery.of(context).size.height,
                       child: Expanded(
                         child: DefaultTabController(
-                          length: 2,
-                          child: Builder(builder: (BuildContext context) {
-                            final TabController tabController =
-                            DefaultTabController.of(context);
-                            tabController.addListener(() {
-                              if(!tabController.indexIsChanging) {
-                                switch(tabController.index) {
-                                  case 0:
-                                      {
-
-                                      }
-                                      break;
-                                  case 1:
-                                      {
-
-                                      }
-                                      break;
-                                }
-                              }
-                            });
-                            return Scaffold(
-                              appBar: AppBar(
-                                bottom: TabBar(
-                                  tabs: [
-                                    Text('Movie'),
-                                    Text('TV Dramas'),
-                                  ],
-                                ),
-                              ),
-                              body: TabBarView(
-                                children: [
-                                  Container(
-                                    child: TabBarViewActorMovie(),
+                            length: 2,
+                            child: Builder(
+                              builder: (BuildContext context) {
+                                final TabController tabController =
+                                    DefaultTabController.of(context);
+                                tabController.addListener(() {
+                                  if (!tabController.indexIsChanging) {
+                                    switch (tabController.index) {
+                                      case 0:
+                                        {}
+                                        break;
+                                      case 1:
+                                        {}
+                                        break;
+                                    }
+                                  }
+                                });
+                                return Scaffold(
+                                  appBar: AppBar(
+                                    bottom: TabBar(
+                                      tabs: [
+                                        Text('Movie'),
+                                        Text('TV Dramas'),
+                                      ],
+                                    ),
                                   ),
-                                  Container(
-                                    child: Text('tv'),
+                                  body: TabBarView(
+                                    children: [
+                                      Container(
+                                        child: TabBarViewActorMovie(),
+                                      ),
+                                      Container(
+                                        child: Text('tv'),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            );
-                          },)
-                        ),
+                                );
+                              },
+                            )),
                       ),
                     )
                   ],
