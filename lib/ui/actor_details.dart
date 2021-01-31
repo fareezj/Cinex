@@ -63,12 +63,15 @@ class _ActorDetailsState extends State<ActorDetails> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(vm.actorDetailsData.name, style:
-                          GoogleFonts.poppins(fontSize: 20.0, fontWeight: FontWeight.bold),
+                        Text(
+                          vm.actorDetailsData.name,
+                          style: GoogleFonts.poppins(
+                              fontSize: 20.0, fontWeight: FontWeight.bold),
                         ),
                         Column(
                           children: [
-                            Text('Popularity Rating:', style: GoogleFonts.poppins()),
+                            Text('Popularity Rating:',
+                                style: GoogleFonts.poppins()),
                             Row(
                               children: [
                                 Text(vm.actorDetailsData.popularity.toString()),
@@ -83,10 +86,21 @@ class _ActorDetailsState extends State<ActorDetails> {
                         )
                       ],
                     ),
-                    Text(vm.actorDetailsData.biography, style:
-                      GoogleFonts.poppins(fontSize: 15.0, color: Colors.lightBlue[900]),
+                    Text(
+                      vm.actorDetailsData.biography,
+                      style: GoogleFonts.poppins(
+                          fontSize: 15.0, color: Colors.lightBlue[900]),
                     ),
-                    Text(vm.actorDetailsData.birthday),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 20.0),
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Movie & TV Shows',
+                        style: GoogleFonts.poppins(
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ),
                     Container(
                       height: MediaQuery.of(context).size.height,
                       child: Expanded(
@@ -109,12 +123,25 @@ class _ActorDetailsState extends State<ActorDetails> {
                                   }
                                 });
                                 return Scaffold(
-                                  appBar: AppBar(
-                                    bottom: TabBar(
-                                      tabs: [
-                                        Text('Movie'),
-                                        Text('TV Dramas'),
-                                      ],
+                                  appBar: PreferredSize(
+                                    preferredSize: Size.fromHeight(50.0),
+                                    child: AppBar(
+                                      elevation: 0.0,
+                                      backgroundColor: Colors.white,
+                                      bottom: TabBar(
+                                        tabs: [
+                                          Text(
+                                            'Movie',
+                                            style: GoogleFonts.poppins(
+                                                color: Colors.lightBlue[900]),
+                                          ),
+                                          Text(
+                                            'TV Dramas',
+                                            style: GoogleFonts.poppins(
+                                                color: Colors.lightBlue[900]),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   body: TabBarView(
