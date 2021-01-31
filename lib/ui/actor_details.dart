@@ -1,5 +1,6 @@
 import 'package:cinex/ui/widgets/tab_bar_view_actor_movie.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:cinex/viewmodel/actor_details_view_model.dart';
 
@@ -62,11 +63,29 @@ class _ActorDetailsState extends State<ActorDetails> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(vm.actorDetailsData.name),
-                        Text(vm.actorDetailsData.popularity.toString()),
+                        Text(vm.actorDetailsData.name, style:
+                          GoogleFonts.poppins(fontSize: 20.0, fontWeight: FontWeight.bold),
+                        ),
+                        Column(
+                          children: [
+                            Text('Popularity Rating:', style: GoogleFonts.poppins()),
+                            Row(
+                              children: [
+                                Text(vm.actorDetailsData.popularity.toString()),
+                                Icon(
+                                  Icons.star_sharp,
+                                  color: Colors.amber,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 15.0)
+                          ],
+                        )
                       ],
                     ),
-                    Text(vm.actorDetailsData.biography),
+                    Text(vm.actorDetailsData.biography, style:
+                      GoogleFonts.poppins(fontSize: 15.0, color: Colors.lightBlue[900]),
+                    ),
                     Text(vm.actorDetailsData.birthday),
                     Container(
                       height: MediaQuery.of(context).size.height,
