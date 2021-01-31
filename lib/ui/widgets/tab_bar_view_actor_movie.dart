@@ -29,6 +29,7 @@ class _TabBarViewActorMovieState extends State<TabBarViewActorMovie> {
             children:
                 List.generate(vmActorMovie.actorMovieCredits.length, (index) {
               return ActorMovieTile(
+                movieId: vmActorMovie.actorMovieCredits[index].id,
                 title: vmActorMovie.actorMovieCredits[index].title,
                 image: vmActorMovie.actorMovieCredits[index].posterPath,
               );
